@@ -1,0 +1,16 @@
+<ngb-carousel [showNavigationArrows]="false">
+    <ng-template ngbSlide>
+      <div>
+        <img src="../../assets/cloud.jpg" alt="first slide">
+      </div>
+      <div class="carousel-caption welcom-text">
+        <h3>Welcome</h3>
+        <div (click)="login()" class="btn-group-toggle">
+            <label class="btn btn-primary">
+               Login
+            </label>
+          </div>
+        <p (click)="register()">or click here to register</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>

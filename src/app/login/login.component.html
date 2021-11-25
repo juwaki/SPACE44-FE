@@ -1,0 +1,28 @@
+<ngb-carousel [showNavigationArrows]="false">
+    <ng-template ngbSlide>
+      <div>
+        <img src="../../assets/cloud.jpg" alt="first slide">
+      </div>
+      <div class="carousel-caption welcom-text">
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">User Name</span>
+            </div>
+            <input [(ngModel)]="username" type="text" class="form-control">
+          </div>
+          
+          <div class="input-group input2">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+            </div>
+            <input [(ngModel)]="password" type="password" class="form-control">
+          </div>
+
+          <div (click)="login()" class="btn-group-toggle login-button">
+            <label class="btn btn-primary">
+               Login
+            </label>
+          </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>

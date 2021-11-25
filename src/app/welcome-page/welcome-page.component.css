@@ -1,0 +1,15 @@
+.carousel-caption{
+     
+ top: 13rem;
+}
+
+h3 {
+    font-size: 9rem;
+    color: black;
+}
+
+p{
+    margin-top: 3rem;
+    color:aqua;
+    cursor: pointer;
+}
