@@ -1,3 +1,8 @@
+<div class="logout">
+  <button type="button" (click)="loggout()" class="btn btn-danger ">Log out</button>
+
+</div>
+
 <h4>CRUD Database</h4>
 
 <table class="table table-striped">
@@ -26,12 +31,16 @@
       <td>{{ crudData.hobby }}</td>
       <td>
         <div class="buttons">
-          <button type="button" class="btn btn-warning">edit</button>
-          <button type="button" class="btn btn-danger margin-button">
+          <button type="button" class="btn btn-warning" (click)="editItem(crudData)">edit</button>
+          <button type="button" class="btn btn-danger margin-button" (click)="deleteItem(crudData.id)">
             Del
           </button>
         </div>
       </td>
     </tr>
   </tbody>
+  <button type="button" (click)="downloadFile()" class="btn btn-primary csv">Download Csv</button>
+
+  <button type="button" (click)="addItem()" class="btn btn-success add">Add Item</button>
+  
 </table>

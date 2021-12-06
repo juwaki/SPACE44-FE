@@ -12,6 +12,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AddItemComponent } from './add-item/add-item.component';
+import { EditItemComponent } from './edit-item/edit-item.component';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     WelcomePageComponent,
     RegisterComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    AddItemComponent,
+    EditItemComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +34,10 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
+],
   bootstrap: [AppComponent]
   
 })

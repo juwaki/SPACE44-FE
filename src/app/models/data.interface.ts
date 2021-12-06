@@ -1,7 +1,7 @@
 export interface CrudData {
     id: number;
-    firstname: string;
-    lastname: string;
+    first: string;
+    last: string;
     email: string;
     phone: string;
     location: string;

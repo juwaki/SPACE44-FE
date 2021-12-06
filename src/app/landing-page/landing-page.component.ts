@@ -1,41 +1,10 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CrudData } from '../models/data.interface';
 import { AuthService } from '../services/auth.service';
 import { CrudService } from '../services/crud.service';
-
-interface Country {
-  name: string;
-  flag: string;
-  area: number;
-  population: number;
-}
-
-const COUNTRIES: Country[] = [
-  {
-    name: 'Russia',
-    flag: 'f/f3/Flag_of_Russia.svg',
-    area: 17075200,
-    population: 146989754
-  },
-  {
-    name: 'Canada',
-    flag: 'c/cf/Flag_of_Canada.svg',
-    area: 9976140,
-    population: 36624199
-  },
-  {
-    name: 'United States',
-    flag: 'a/a4/Flag_of_the_United_States.svg',
-    area: 9629091,
-    population: 324459463
-  },
-  {
-    name: 'China',
-    flag: 'f/fa/Flag_of_the_People%27s_Republic_of_China.svg',
-    area: 9596960,
-    population: 1409517397
-  }
-];
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-landing-page',
@@ -43,11 +12,10 @@ const COUNTRIES: Country[] = [
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  countries = COUNTRIES;
 
   loggedIn: boolean;
-  assignData: CrudData;
-  constructor(private _auth: AuthService, public _crudService: CrudService) { }
+  assignData: CrudData[] = [];
+  constructor(private _auth: AuthService, private _crudService: CrudService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCurrentUser();
@@ -58,13 +26,45 @@ export class LandingPageComponent implements OnInit {
     this._auth.currentUser$.subscribe(user => {
 
       this.loggedIn = !!user;
-    }, err=> console.log(err))
+    }, err => console.log(err))
   }
 
   getCrudData() {
-    this._crudService.getCrudData().subscribe((data: CrudData)=>{
+    this._crudService.getCrudData().subscribe((data: CrudData[]) => {
       this.assignData = data;
     })
+  }
+
+  addItem() {
+    this.router.navigateByUrl('/add-item');
+  }
+
+  editItem(crudData: CrudData) {
+    //console.log(id)
+    // this.router.navigateByUrl('/edit-item');
+    this.router.navigate(['edit-item'], { state: { data: crudData } });
+  }
+
+  deleteItem(id: number) {
+    this._crudService.deleteCrudData(id).subscribe(response => {
+      console.log('delete successful');
+      window.location.reload();
+    })
+  }
+
+  downloadFile() {
+    const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
+    const header = Object.keys(this.assignData[0]);
+    let csv = this.assignData.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+    csv.unshift(header.join(','));
+    let csvArray = csv.join('\r\n');
+
+    var blob = new Blob([csvArray], { type: 'text/csv' })
+    saveAs(blob, "space44.csv");
+  }
+
+  loggout(){
+    this._auth.logout();
   }
 
 }

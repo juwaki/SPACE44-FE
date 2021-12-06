@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { pipe, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user.interface';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class AuthService {
 
   currentUser$ = this.currentUserSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public jwtHelper: JwtHelperService, private router: Router) { }
 
   public login(username: string, password: string) {
     return this.http.post(this.baseUrl + 'account/login', { username, password }).pipe(
@@ -50,6 +52,14 @@ export class AuthService {
   public logout(): void {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
+    this.router.navigateByUrl('');
+  }
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('user');
+    // Check whether the token is expired and return
+    // true or false
+    return !this.jwtHelper.isTokenExpired(token);
   }
 }
 
