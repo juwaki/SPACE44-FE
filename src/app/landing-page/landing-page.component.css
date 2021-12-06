@@ -1,17 +1,17 @@
-.buttons{
-    display: inline-flex
+.buttons {
+  display: inline-flex;
 }
 
 .margin-button {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
-.add{
-    width: 6rem;
-    margin-left: 1rem;
+.add {
+  width: 6rem;
+  margin-left: 1rem;
 }
 
-.logout{
-    display: flex;
-    justify-content: space-around;
+.logout {
+  display: flex;
+  justify-content: space-around;
 }

@@ -6,44 +6,44 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-import { 
-  AuthGuardService as AuthGuard 
+import {
+  AuthGuardService as AuthGuard
 } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
-  path: '',
-  component: WelcomePageComponent
-},
+    path: '',
+    component: WelcomePageComponent
+  },
 
-{
-  path: 'login',
-  component: LoginComponent
-},
+  {
+    path: 'login',
+    component: LoginComponent
+  },
 
-{
-  path: 'register',
-  component: RegisterComponent
-},
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
 
-{
-  path: 'landing-page',
-  component: LandingPageComponent,
-  canActivate: [AuthGuard] 
-},
+  {
+    path: 'landing-page',
+    component: LandingPageComponent,
+    canActivate: [AuthGuard]
+  },
 
-{
-  path: 'add-item',
-  component: AddItemComponent,
-  canActivate: [AuthGuard] 
+  {
+    path: 'add-item',
+    component: AddItemComponent,
+    canActivate: [AuthGuard]
 
-},
+  },
 
-{
-  path: 'edit-item',
-  component: EditItemComponent,
-  canActivate: [AuthGuard] 
-}
+  {
+    path: 'edit-item',
+    component: EditItemComponent,
+    canActivate: [AuthGuard]
+  }
 
 ];
 

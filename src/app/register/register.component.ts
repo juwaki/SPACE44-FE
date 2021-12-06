@@ -16,13 +16,13 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  register():void {
-    this._authService.register(this.username, this.password).subscribe(res =>{
+  register(): void {
+    this._authService.register(this.username, this.password).subscribe(res => {
       console.log('success')
       this.router.navigateByUrl('/landing-page');
 
     }, error => console.log(error.error))
-  
+
   }
-  
+
 }

@@ -23,7 +23,7 @@ export class CrudService {
     return this.http.post(this.baseUrl + 'data/add', { first, last, email, phone, location, hobby })
   }
 
-  public deleteCrudData(id: number){
+  public deleteCrudData(id: number) {
     return this.http.delete(this.baseUrl + 'data/' + id);
   }
 

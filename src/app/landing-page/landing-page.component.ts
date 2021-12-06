@@ -40,8 +40,6 @@ export class LandingPageComponent implements OnInit {
   }
 
   editItem(crudData: CrudData) {
-    //console.log(id)
-    // this.router.navigateByUrl('/edit-item');
     this.router.navigate(['edit-item'], { state: { data: crudData } });
   }
 
@@ -63,7 +61,7 @@ export class LandingPageComponent implements OnInit {
     saveAs(blob, "space44.csv");
   }
 
-  loggout(){
+  loggout() {
     this._auth.logout();
   }
 

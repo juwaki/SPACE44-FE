@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { RegisterComponent } from './register/register.component';
@@ -37,8 +36,8 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService
-],
+  ],
   bootstrap: [AppComponent]
-  
+
 })
 export class AppModule { }

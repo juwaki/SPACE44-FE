@@ -14,12 +14,12 @@ export class AppComponent implements OnInit {
 
   }
 
-ngOnInit() {
+  ngOnInit() {
 
-  this.setCurrentUser();
-}
+    this.setCurrentUser();
+  }
 
-setCurrentUser() {
+  setCurrentUser() {
     const user: User = JSON.parse(localStorage.getItem('user'));
     this.auth.setCurrentUser(user);
   }

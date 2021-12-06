@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
@@ -12,7 +11,6 @@ export class LoginComponent implements OnInit {
 
   username: string = undefined;
   password: string = undefined;
-  loginForm: FormGroup;
 
   constructor(private auth: AuthService, private router: Router) { }
 
@@ -22,10 +20,10 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log(this.username, this.password)
-    this.auth.login(this.username, this.password).subscribe(res =>{
+    this.auth.login(this.username, this.password).subscribe(res => {
       this.router.navigateByUrl('/landing-page');
     }, error => console.error(error));
-    
+
   }
 
 }
