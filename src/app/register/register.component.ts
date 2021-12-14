@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
       console.log('success')
       this.router.navigateByUrl('/landing-page');
 
-    }, error => console.log(error.error))
+    }, error => this._authService.error())
 
   }
 

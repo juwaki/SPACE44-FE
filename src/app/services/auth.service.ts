@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   baseUrl = 'https://localhost:5001/api/';
+  // baseUrl = environment.api;;
+
+  
 
   private currentUserSource = new ReplaySubject<User>(1);
 
@@ -60,6 +63,10 @@ export class AuthService {
     // Check whether the token is expired and return
     // true or false
     return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  public error(): string {
+    return 'an error occured';
   }
 }
 

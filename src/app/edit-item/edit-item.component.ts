@@ -15,8 +15,9 @@ export class EditItemComponent implements OnInit {
   phone: string = undefined;
   location: string = undefined;
   hobby: string = undefined;
+  update: boolean = false;
 
-  constructor(private _crudService: CrudService, private router: Router) { 
+  constructor(private _crudService: CrudService, private router: Router) {
     this.first = this.router.getCurrentNavigation().extras.state.data.first;
     this.last = this.router.getCurrentNavigation().extras.state.data.last;
     this.email = this.router.getCurrentNavigation().extras.state.data.email;
@@ -26,12 +27,18 @@ export class EditItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
- 
+
   }
 
 
   save() {
+    this.update = true;
 
+    setTimeout(() => {
+      this.update = false;
+
+        this.router.navigateByUrl('/landing-page')
+    }, 3000);
   }
 
 }
